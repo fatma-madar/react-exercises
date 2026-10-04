@@ -1,0 +1,42 @@
+.header {
+  background-color: #5f5481;
+  color: aliceblue;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.header h1 {
+  margin: 0 0 10px;
+  color: aliceblue;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  color: #5f5481;
+}
+
+.about {
+  padding: 40px 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about h2 {
+  color: #5f5481;
+}
+
+.about ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about li {
+  background: #f4f4f4;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+}

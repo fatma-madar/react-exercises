@@ -1,3 +1,4 @@
+import '../styles/cart.css';
 import { useState } from 'react';
 
 function CartItem({ productName, price }){

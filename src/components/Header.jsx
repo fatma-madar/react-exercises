@@ -1,3 +1,5 @@
+import '../styles/portfolio.css';
+
 function Header(){
 return(
     <header className="header">

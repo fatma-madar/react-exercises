@@ -1,3 +1,5 @@
+import '../styles/portfolio.css';
+
 function About(){
     const name ="Fatma";
     const role ="IT Student";

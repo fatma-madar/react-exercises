@@ -1,5 +1,5 @@
 import { useState, useEffect} from 'react';
-import './UsersDirectory.css';
+import '../styles/users.css';
 
 function UsersDirectory() {
     // مصفوفة لتخزين بيانات المستخدمين
