@@ -7,24 +7,26 @@ import About from "./components/About";
 import Footer from "./components/Footer";
 import CartItem from './components/CartItem';
 import TodoList from './components/TodoList';
+import UsersDirectory from './components/UsersDirectory';
 import './App.css'
+
 
 function App() {
 
   return (
     <>
-    {/* <Header />
-    <About />
+    {/* <Header /> */}
+     {/*<About />
     <Footer /> */}
         {/* <div className="app">
       <CartItem productName="لابتوب" price={1200} />
       <CartItem productName="سماعة" price={150} />
      </div> */}
 
-
+   {/* <TodoList /> */}
 
 <div className="app">
-      <TodoList />
+   <UsersDirectory />
     </div>
 
 
