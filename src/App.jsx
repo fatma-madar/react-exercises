@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { useTheme } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import About from './components/About';
@@ -9,8 +10,11 @@ import UsersDirectory from './components/UsersDirectory';
 import './App.css';
 
 function App() {
+    const { theme } = useTheme();
+
   return (
-    <>
+        <div className={`app-container ${theme}`}>
+
       <Navbar />
 
       <div className="app">
@@ -41,7 +45,7 @@ function App() {
           <Route path="/users" element={<UsersDirectory />} />
         </Routes>
       </div>
-    </>
+    </div>
   );
 }
 

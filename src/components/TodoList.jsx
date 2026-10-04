@@ -1,32 +1,31 @@
-import { useState } from 'react';
+import { useState, useReducer } from 'react';
+import { todoReducer, initialState } from '../reducers/todoReducer';
 import '../styles/todo.css';
 
 
 function TodoList() {
 
   const [inputValue, setInputValue] = useState(""); //نص الحقل
-  const [tasks, setTasks] = useState([]); //مصفوفة خالية
+  const [state, dispatch] = useReducer(todoReducer, initialState); //مصفوفة خالية
+
   //إضافة مهمة جديدة
   const handleSubmit = (e) => {
     e.preventDefault(); // منع إعادة تحميل الصفحة
 
     if (inputValue.trim() === "") return; // منع الفارغ
 
-    const newTask = {
-      id: Date.now(),
-      text: inputValue,
-      completed: false
-    };
-    setTasks([...tasks, newTask])
-    setInputValue("");//تفريغ الحقل
-  }
+    dispatch({ type: 'ADD_TASK', payload: inputValue });
+    setInputValue("");
+  };
+
   //قلب حالة الإنجاز
   const toggleTask = (id) => {
-    const updated = tasks.map((task) =>
-      task.id == id ? { ...task, completed: !task.completed } : task
-    );
-    setTasks(updated);
-  }
+    dispatch({ type: 'TOGGLE_TASK', payload: id });
+  };
+  //حذف مهمة
+  const deleteTask = (id) => {
+    dispatch({ type: 'DELETE_TASK', payload: id });
+  };
 
   return (
     <div className="todo-app">
@@ -40,8 +39,8 @@ function TodoList() {
         />
         <button type="submit">إضافة</button>
       </form>
-      <ul className="task-list">
-        {tasks.map((task) => (
+      <ul className="task-list" dir="rtl">
+        {state.tasks.map((task) => (
           <li key={task.id}>
             <input
               type="checkbox"
@@ -51,6 +50,12 @@ function TodoList() {
             <span className={task.completed ? 'done' : ''}>
               {task.text}
             </span>
+            <button
+              className="delete-btn"
+              onClick={() => deleteTask(task.id)}
+            >
+              حذف
+            </button>
           </li>
         ))}
       </ul>
