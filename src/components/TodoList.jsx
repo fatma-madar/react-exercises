@@ -1,12 +1,20 @@
-import { useState, useReducer } from 'react';
+import { useState, useReducer, useEffect} from 'react';
 import { todoReducer, initialState } from '../reducers/todoReducer';
+import { useLocalStorage } from '../hooks/useLocalStorage';
+
 import '../styles/todo.css';
 
 
 function TodoList() {
+  const [inputValue, setInputValue] = useState(''); // حالة لتخزين قيمة الإدخال
+  const [savedTasks, setSavedTasks] = useLocalStorage('tasks', []); // استدعاء هوك useLocalStorage لتخزين المهام في localStorage
+  const [state, dispatch] = useReducer(todoReducer, {tasks: savedTasks}); //مصفوفة خالية
 
-  const [inputValue, setInputValue] = useState(""); //نص الحقل
-  const [state, dispatch] = useReducer(todoReducer, initialState); //مصفوفة خالية
+  //حفظ المهام عند كل تغيير
+  useEffect(() => {
+    setSavedTasks(state.tasks);
+  },[state.tasks]);
+
 
   //إضافة مهمة جديدة
   const handleSubmit = (e) => {
